@@ -27,7 +27,11 @@ struct LockedView: View {
             
             Button("Lock album") {
                 unlocked = false
+                text = "LOCKED"
             }
+        }
+        .onAppear() {
+            authenticate()
         }
     }
     
