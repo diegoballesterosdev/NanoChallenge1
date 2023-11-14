@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var obsVar: ObsVar
     var body: some View {
-        LockedView()
+        if obsVar.unlocked {
+            GalleryView(obsVar: obsVar)
+        } else {
+            LockedView(obsVar: obsVar)
+        }
+        
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(obsVar: ObsVar())
 }

@@ -9,21 +9,27 @@ import SwiftUI
 import LocalAuthentication
 
 struct LockedView: View {
-    @State private var unlocked = false
+    //    @State private var unlocked = false
     @State private var passcode = false
     @State private var text = "Use Face ID to View This Album"
+    
+    @ObservedObject var obsVar: ObsVar
     
     
     var body: some View {
         VStack {
             Spacer()
+            
             VStack {
+                
                 Image(systemName: "lock.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 50, maxHeight: 50)
                     .opacity(0.6)
                     .padding(10)
+                
+                
                 
                 Text(text)
                     .font(.title2)
@@ -39,10 +45,7 @@ struct LockedView: View {
             
             Spacer()
             
-            Button("Lock album") {
-                unlocked = false
-                text = "LOCKED"
-            }
+            
         }
         .onAppear() {
             authenticate()
@@ -57,17 +60,30 @@ struct LockedView: View {
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             
             // Handle events
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Your passcode is required to view this album") { success, authenticationError in
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Your Face ID is required to view this album") { success, authenticationError in
                 
-                if success && passcode {
-                    text = "UNLOCKED"
-                } else {
-                    text = "Use Your Passcode to View This Album"
-//                    passcode = true
+                if success {
+                    
+                    //Face ID authentication is running on background, not with MainActor, because it's done by the system and not by the app, so we need to let the App now that the changing of the unlocked var should be runned in the MainActor
+                    Task {
+                        await MainActor.run {
+                            obsVar.unlocked = true
+                        }
+                    }
                 }
             }
-        } else {
-            text = "Cannot authenticate"
+        }
+        else {
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Your passcode is required to view this album") { success, authenticationError in
+                if success {
+                    
+                    Task {
+                        await MainActor.run {
+                            obsVar.unlocked = true
+                        }
+                    }
+                }
+            }
             
         }
     }
@@ -75,5 +91,5 @@ struct LockedView: View {
 
 
 #Preview {
-    LockedView()
+    LockedView(obsVar: ObsVar())
 }
