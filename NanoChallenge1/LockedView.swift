@@ -15,11 +15,18 @@ struct LockedView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text(text)
             
             
             Button("View Album") {
                 authenticate()
+            }
+            
+            Spacer()
+            
+            Button("Lock album") {
+                unlocked = false
             }
         }
     }
@@ -32,7 +39,7 @@ struct LockedView: View {
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             
             // Handle events
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "This is a security check reason.") { success, authenticationError in
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Your passcode is required to view this album") { success, authenticationError in
                 
                 if success {
                     text = "UNLOCKED"
@@ -42,6 +49,7 @@ struct LockedView: View {
             }
         } else {
             text = "Phone does not have biometrics"
+            
         }
     }
 }
