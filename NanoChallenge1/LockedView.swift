@@ -9,9 +9,6 @@ import SwiftUI
 import LocalAuthentication
 
 struct LockedView: View {
-    //    @State private var unlocked = false
-    @State private var passcode = false
-    @State private var text = "Use Face ID to View This Album"
     
     @ObservedObject var obsVar: ObsVar
     
@@ -21,7 +18,6 @@ struct LockedView: View {
             Spacer()
             
             VStack {
-                
                 Image(systemName: "lock.fill")
                     .resizable()
                     .scaledToFit()
@@ -29,23 +25,17 @@ struct LockedView: View {
                     .opacity(0.6)
                     .padding(10)
                 
-                
-                
-                Text(text)
+                Text("Use Face ID to View This Album")
                     .font(.title2)
                     .fontWeight(.bold)
             }
             .padding()
-            
-            
-            
+
             Button("View Album") {
                 authenticate()
             }
             
-            Spacer()
-            
-            
+            Spacer()  
         }
         .onAppear() {
             authenticate()
