@@ -12,6 +12,8 @@ struct LockedView: View {
     
     @ObservedObject var obsVar: ObsVar
     
+   
+    
     
     var body: some View {
         VStack {
@@ -35,7 +37,7 @@ struct LockedView: View {
                 authenticate()
             }
             
-            Spacer()  
+            Spacer()
         }
         .onAppear() {
             authenticate()

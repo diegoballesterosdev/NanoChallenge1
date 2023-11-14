@@ -9,16 +9,25 @@ import SwiftUI
 
 struct GalleryView: View {
     @ObservedObject var obsVar: ObsVar
-    //    @StateObject var locked = LockedView()
     
-    
-    
-    
+    //Allows to detect if the app is on background, active or inative
+    @Environment(\.scenePhase) var scenePhase
+   
     var body: some View {
         
         VStack {
             Text("Hidden album!")
             Button("Lock album") {
+                obsVar.unlocked = false
+            }
+        }
+        //We lock the screen if the app goes to background
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .inactive {
+                obsVar.unlocked = false
+            } else if newPhase == .active {
+                print("Active")
+            } else if newPhase == .background {
                 obsVar.unlocked = false
             }
         }
