@@ -10,13 +10,27 @@ import LocalAuthentication
 
 struct LockedView: View {
     @State private var unlocked = false
-    @State private var text = "LOCKED"
+    @State private var passcode = false
+    @State private var text = "Use Face ID to View This Album"
     
     
     var body: some View {
         VStack {
             Spacer()
-            Text(text)
+            VStack {
+                Image(systemName: "lock.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 50, maxHeight: 50)
+                    .opacity(0.6)
+                    .padding(10)
+                
+                Text(text)
+                    .font(.title2)
+                    .fontWeight(.bold)
+            }
+            .padding()
+            
             
             
             Button("View Album") {
@@ -39,20 +53,21 @@ struct LockedView: View {
         let context = LAContext()
         var error: NSError?
         
-        // Check whether it's possible to use biometric authentication
+        // Check whether it's possible to use authentications
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             
             // Handle events
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Your passcode is required to view this album") { success, authenticationError in
                 
-                if success {
+                if success && passcode {
                     text = "UNLOCKED"
                 } else {
-                    text = "There was a problem!"
+                    text = "Use Your Passcode to View This Album"
+//                    passcode = true
                 }
             }
         } else {
-            text = "Phone does not have biometrics"
+            text = "Cannot authenticate"
             
         }
     }
