@@ -36,11 +36,6 @@ struct LockedView: View {
             
             Spacer()
         }
-        .onAppear() {
-            if obsVar.inactive == false {
-                authenticate()
-            }
-        }
     }
     
     func authenticate() {

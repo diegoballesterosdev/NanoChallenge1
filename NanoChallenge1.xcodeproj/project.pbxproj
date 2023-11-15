@@ -12,7 +12,6 @@
 		904E832F2B03848D00018EA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 904E832E2B03848D00018EA6 /* Assets.xcassets */; };
 		904E83322B03848D00018EA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 904E83312B03848D00018EA6 /* Preview Assets.xcassets */; };
 		904E83392B03856300018EA6 /* LockedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904E83382B03856300018EA6 /* LockedView.swift */; };
-		90655D802B04C26500BC4C93 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90655D7F2B04C26500BC4C93 /* AlbumsView.swift */; };
 		90747AC02B03DDB600B6E394 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90747ABF2B03DDB600B6E394 /* GalleryView.swift */; };
 		90747AC22B03DE4A00B6E394 /* ObsObjVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */; };
 /* End PBXBuildFile section */
@@ -24,7 +23,6 @@
 		904E832E2B03848D00018EA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		904E83312B03848D00018EA6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		904E83382B03856300018EA6 /* LockedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedView.swift; sourceTree = "<group>"; };
-		90655D7F2B04C26500BC4C93 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		90747ABF2B03DDB600B6E394 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsObjVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,7 +60,6 @@
 				904E832A2B03848C00018EA6 /* NanoChallenge1App.swift */,
 				904E832C2B03848C00018EA6 /* ContentView.swift */,
 				904E83382B03856300018EA6 /* LockedView.swift */,
-				90655D7F2B04C26500BC4C93 /* AlbumsView.swift */,
 				90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */,
 				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
 				904E832E2B03848D00018EA6 /* Assets.xcassets */,
@@ -151,7 +148,6 @@
 			files = (
 				904E83392B03856300018EA6 /* LockedView.swift in Sources */,
 				904E832D2B03848C00018EA6 /* ContentView.swift in Sources */,
-				90655D802B04C26500BC4C93 /* AlbumsView.swift in Sources */,
 				90747AC22B03DE4A00B6E394 /* ObsObjVar.swift in Sources */,
 				904E832B2B03848C00018EA6 /* NanoChallenge1App.swift in Sources */,
 				90747AC02B03DDB600B6E394 /* GalleryView.swift in Sources */,

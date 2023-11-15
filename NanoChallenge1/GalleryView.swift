@@ -26,7 +26,6 @@ struct GalleryView: View {
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
                 obsVar.unlocked = false
-                obsVar.inactive = true
             } else if newPhase == .active {
                 print("Active")
             } else if newPhase == .background {
