@@ -11,10 +11,7 @@ import LocalAuthentication
 struct LockedView: View {
     
     @ObservedObject var obsVar: ObsVar
-    
-    
-    
-    
+ 
     var body: some View {
         VStack {
             Spacer()
@@ -43,7 +40,6 @@ struct LockedView: View {
             if obsVar.inactive == false {
                 authenticate()
             }
-            
         }
     }
     
@@ -79,7 +75,6 @@ struct LockedView: View {
                     }
                 }
             }
-            
         }
     }
 }

@@ -21,6 +21,7 @@ struct GalleryView: View {
                 obsVar.unlocked = false
             }
         }
+        
         //We lock the screen if the app goes to background
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
