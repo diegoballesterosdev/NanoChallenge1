@@ -36,6 +36,7 @@ struct LockedView: View {
             
             Spacer()
         }
+        
     }
     
     func authenticate() {

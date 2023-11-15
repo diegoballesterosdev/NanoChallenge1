@@ -10,11 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var obsVar: ObsVar
     var body: some View {
-        if obsVar.unlocked {
-            GalleryView(obsVar: obsVar)
-        } else {
-            LockedView(obsVar: obsVar)
-        }
+        AlbumsView(obsVar: ObsVar())
+
     }
 }
 
