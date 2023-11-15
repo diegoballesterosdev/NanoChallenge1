@@ -11,7 +11,7 @@ import LocalAuthentication
 struct LockedView: View {
     
     @ObservedObject var obsVar: ObsVar
- 
+    
     var body: some View {
         VStack {
             Spacer()

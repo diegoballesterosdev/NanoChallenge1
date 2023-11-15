@@ -12,7 +12,7 @@ struct GalleryView: View {
     
     //Allows to detect if the app is on background, active or inative
     @Environment(\.scenePhase) var scenePhase
-   
+    
     var body: some View {
         
         VStack {
