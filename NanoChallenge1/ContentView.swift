@@ -16,7 +16,9 @@ struct ContentView: View {
             LockedView(obsVar: obsVar)
         }
         
+        
     }
+    
 }
 
 #Preview {

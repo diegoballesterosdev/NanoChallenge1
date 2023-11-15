@@ -12,7 +12,7 @@ struct LockedView: View {
     
     @ObservedObject var obsVar: ObsVar
     
-   
+    
     
     
     var body: some View {
@@ -32,7 +32,7 @@ struct LockedView: View {
                     .fontWeight(.bold)
             }
             .padding()
-
+            
             Button("View Album") {
                 authenticate()
             }
@@ -40,7 +40,10 @@ struct LockedView: View {
             Spacer()
         }
         .onAppear() {
-            authenticate()
+            if obsVar.inactive == false {
+                authenticate()
+            }
+            
         }
     }
     
