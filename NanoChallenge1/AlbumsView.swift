@@ -114,10 +114,7 @@ struct AlbumsView: View {
                         .padding(.horizontal)
                     }
                     .navigationTitle("Albums")
-                    .onAppear() {
-                        print("disappear")
-                        obsVar.unlocked = false
-                    }
+                    
                 }
             }
     }

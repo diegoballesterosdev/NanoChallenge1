@@ -38,6 +38,10 @@ struct LockedView: View {
             
 //            Spacer()
         }
+        .onDisappear() {
+            print("disappear")
+            obsVar.unlocked = false
+        }
         
         
     }
