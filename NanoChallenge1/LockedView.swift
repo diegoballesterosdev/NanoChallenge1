@@ -15,7 +15,7 @@ struct LockedView: View {
     var body: some View {
         
         VStack {
-            Spacer()
+//            Spacer()
             
             VStack {
                 Image(systemName: "lock.fill")
@@ -36,7 +36,7 @@ struct LockedView: View {
                 authenticate()
             }
             
-            Spacer()
+//            Spacer()
         }
         
         
