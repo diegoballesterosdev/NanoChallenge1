@@ -10,11 +10,11 @@ import SwiftUI
 struct UnlockingView: View {
     @ObservedObject var obsVar: ObsVar
     var body: some View {
-        if obsVar.unlocked {
-            GalleryView(obsVar: obsVar)
-        } else {
-            LockedView(obsVar: obsVar)
-        }
+            if obsVar.unlocked {
+                GalleryView(obsVar: obsVar)
+            } else {
+                LockedView(obsVar: obsVar)
+            }
     }
 }
 

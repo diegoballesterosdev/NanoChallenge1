@@ -13,6 +13,7 @@ struct LockedView: View {
     @ObservedObject var obsVar: ObsVar
     
     var body: some View {
+        
         VStack {
             Spacer()
             
@@ -23,6 +24,7 @@ struct LockedView: View {
                     .frame(maxWidth: 50, maxHeight: 50)
                     .opacity(0.6)
                     .padding(10)
+                    .accessibilityHidden(true)
                 
                 Text("Use Face ID to View This Album")
                     .font(.title2)
@@ -36,6 +38,7 @@ struct LockedView: View {
             
             Spacer()
         }
+        
         
     }
     

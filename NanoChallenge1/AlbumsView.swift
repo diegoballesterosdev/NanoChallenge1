@@ -16,17 +16,18 @@ struct AlbumsView: View {
     
     let columns = [GridItem(.adaptive(minimum: 150))]
     
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack {
-                    
                     Divider()
                         .padding(.leading)
                     
                     Section {
                         LazyVGrid(columns: columns){
                             ForEach(0..<4) { int in
+                                let randomInt = Int.random(in: 1..<100)
                                 NavigationLink {
                                 } label: {
                                     VStack {
@@ -34,23 +35,26 @@ struct AlbumsView: View {
                                             .scaledToFit()
                                             .clipShape(.rect(cornerRadius: 5))
                                         HStack {
-                                            Text("Album")
+                                            Text("Album \(int+1)")
                                                 .foregroundStyle(colorScheme == .light ? .black : .white)
-                                            //                                                    .fore
                                             Spacer()
                                         }
                                         HStack {
-                                            Text("100")
+                                            Text("\(randomInt)")
                                                 .foregroundStyle(colorScheme == .light ? .black : .white)
                                                 .foregroundStyle(.secondary)
-                                            //                                                    .font(.caption)
                                             Spacer()
                                         }
-                                        
                                     }
-                                    
                                 }
+                                .accessibilityLabel("Album \(int+1), \(randomInt) photos")
+        
+//                                .accessibilityInputLabels(["Album \(int+1)", "Hola"])
+                                
+                                
+                                
                             }
+                            
                         }
                         
                     } header: {
@@ -60,6 +64,9 @@ struct AlbumsView: View {
                                 .fontWeight(.bold)
                             Spacer()
                         }
+                        .accessibilityAddTraits([.isHeader])
+                        .accessibilityLabel("My Albums")
+                        
                     }
                     .padding(.horizontal)
                     
@@ -84,7 +91,6 @@ struct AlbumsView: View {
                                 .foregroundStyle(.blue)
                             }
                             
-                            
                             NavigationLink {
                                 UnlockingView(obsVar: ObsVar())
                             } label: {
@@ -93,13 +99,12 @@ struct AlbumsView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 25)
-                                    Text("Hidden")
+                                    Text("Recently Deleted")
                                         .font(.title2)
                                         .padding(.leading, 13)
                                 }
                                 .foregroundStyle(.blue)
                             }
-                            
                         }
                         .frame(minHeight: minRowHeight * 2)
                         .listStyle(PlainListStyle())
@@ -112,9 +117,6 @@ struct AlbumsView: View {
                         }
                     }
                     .padding(.horizontal)
-                    
-                    
-                    
                 }
                 .navigationTitle("Albums")
                 .onAppear() {
@@ -123,7 +125,6 @@ struct AlbumsView: View {
                 }
             }
         }
-        
     }
 }
 
