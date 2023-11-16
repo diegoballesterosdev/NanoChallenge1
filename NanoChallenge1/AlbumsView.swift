@@ -18,7 +18,6 @@ struct AlbumsView: View {
     
     
     var body: some View {
-        TabView {
             NavigationStack {
                 ScrollView {
                     VStack {
@@ -121,11 +120,6 @@ struct AlbumsView: View {
                     }
                 }
             }
-            .tabItem {
-                Label("Albums", systemImage: "rectangle.stack.fill")
-            }
-        }
-        
     }
 }
 
