@@ -121,6 +121,7 @@ struct AlbumsView: View {
                 
             }
         }
+        
     }
 }
 
