@@ -63,11 +63,11 @@
 			children = (
 				904E832A2B03848C00018EA6 /* NanoChallenge1App.swift */,
 				904E832C2B03848C00018EA6 /* ContentView.swift */,
-				904E83382B03856300018EA6 /* LockedView.swift */,
 				90655D812B04C56500BC4C93 /* AlbumsView.swift */,
-				90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */,
-				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
 				90655D832B04DE7900BC4C93 /* UnlockingView.swift */,
+				904E83382B03856300018EA6 /* LockedView.swift */,
+				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
+				90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */,
 				904E832E2B03848D00018EA6 /* Assets.xcassets */,
 				904E83302B03848D00018EA6 /* Preview Content */,
 			);
@@ -301,7 +301,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,7 +332,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
