@@ -13,8 +13,8 @@ struct UnlockingView: View {
         if obsVar.unlocked {
             GalleryView(obsVar: obsVar)
                 .onDisappear() {
-                            obsVar.unlocked = false
-                        }
+                    obsVar.unlocked = false
+                }
         } else {
             LockedView(obsVar: obsVar)
         }

@@ -38,46 +38,22 @@ struct AlbumsView: View {
                 VStack {
                     Divider()
                         .padding(.leading)
-
                     Section {
-                        LazyVGrid(columns: columns){
-                            ForEach(0..<4) { int in
-                                let randomInt = Int.random(in: 1..<100)
-                                NavigationLink {
-                                } label: {
-                                    VStack {
-                                        Rectangle()
-                                            .scaledToFit()
-                                            .clipShape(.rect(cornerRadius: 5))
-                                        HStack {
-                                            Text("Album \(int+1)")
-                                                .foregroundStyle(colorScheme == .light ? .black : .white)
-                                            Spacer()
-                                        }
-                                        HStack {
-                                            Text("\(randomInt)")
-                                                .foregroundStyle(colorScheme == .light ? .black : .white)
-                                                .foregroundStyle(.secondary)
-                                            Spacer()
-                                        }
-                                    }
-                                }
-                                .accessibilityLabel("Album \(int+1), \(randomInt) photos")
-                            }
-                        }
+                        AlbumsGridView()
                         
                     } header: {
                         HStack {
                             Text("My Albums")
                                 .font(.title2)
                                 .fontWeight(.bold)
+                                .padding(.leading)
                             Spacer()
                         }
                         .accessibilityAddTraits([.isHeader])
                         .accessibilityLabel("My Albums")
                         
                     }
-                    .padding(.horizontal)
+                    
                     
                     Divider()
                         .padding(.leading)
@@ -103,7 +79,6 @@ struct AlbumsView: View {
                                 }
                             }
                         }
-//                        .frame(minHeight: minRowHeight )
                         .frame(minHeight: minRowHeight * CGFloat(listItems.count))
                         .listStyle(PlainListStyle())
                     } header: {
