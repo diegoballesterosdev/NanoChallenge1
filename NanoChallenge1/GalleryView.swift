@@ -7,27 +7,42 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftData
 
 struct GalleryView: View {
     @ObservedObject var obsVar: ObsVar
     
     //Allows to detect if the app is on background, active or inative
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.modelContext) private var context
     
+//    @State var imageItem = ImageItem()
     @State var selectedPhoto: PhotosPickerItem?
-    @State var selectedPhotoData: Data?
+    
+    @Query private var items: [ImageItem]
     
     var body: some View {
         NavigationStack {
             VStack {
-                if let selectedPhotoData, let uiImage = UIImage(data: selectedPhotoData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFit()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: 300)
-                    
+                
+                List {
+                    ForEach(items){ item in
+                        let uiImage = UIImage(data: item.image!)
+                        Image(uiImage: uiImage!)
+                        
+                    }
                 }
+//                if let imageData = imageItem.image,
+//                   let uiImage = UIImage(data: imageData) {
+//                    Image(uiImage: uiImage)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .scaledToFill()
+//                        .frame(maxWidth: .infinity, maxHeight: 300)
+//                    
+//                }
+                
+                
                 
                 
                 Text("Hidden album!")
@@ -57,9 +72,12 @@ struct GalleryView: View {
                 obsVar.unlocked = false
             }
         }
-        .task(id: selectedPhoto) {
+        .task(id: selectedPhoto) {		
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
-                 selectedPhotoData = data
+//                imageItem.image = data
+                
+                let item =  ImageItem(image: data)
+                context.insert(item)
             }
            
         }

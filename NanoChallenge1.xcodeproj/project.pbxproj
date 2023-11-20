@@ -15,6 +15,7 @@
 		90602D0B2B07A0B50057D845 /* AlbumsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90602D0A2B07A0B50057D845 /* AlbumsGridView.swift */; };
 		90655D822B04C56500BC4C93 /* AlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90655D812B04C56500BC4C93 /* AlbumsView.swift */; };
 		90655D842B04DE7900BC4C93 /* UnlockingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90655D832B04DE7900BC4C93 /* UnlockingView.swift */; };
+		906FB8742B0B5F3900998770 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906FB8732B0B5F3900998770 /* ImageItem.swift */; };
 		90747AC02B03DDB600B6E394 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90747ABF2B03DDB600B6E394 /* GalleryView.swift */; };
 		90747AC22B03DE4A00B6E394 /* ObsObjVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +30,7 @@
 		90602D0A2B07A0B50057D845 /* AlbumsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsGridView.swift; sourceTree = "<group>"; };
 		90655D812B04C56500BC4C93 /* AlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsView.swift; sourceTree = "<group>"; };
 		90655D832B04DE7900BC4C93 /* UnlockingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockingView.swift; sourceTree = "<group>"; };
+		906FB8732B0B5F3900998770 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		90747ABF2B03DDB600B6E394 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsObjVar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				90655D832B04DE7900BC4C93 /* UnlockingView.swift */,
 				904E83382B03856300018EA6 /* LockedView.swift */,
 				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
+				906FB8732B0B5F3900998770 /* ImageItem.swift */,
 				90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */,
 				904E832E2B03848D00018EA6 /* Assets.xcassets */,
 				904E83302B03848D00018EA6 /* Preview Content */,
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				906FB8742B0B5F3900998770 /* ImageItem.swift in Sources */,
 				904E83392B03856300018EA6 /* LockedView.swift in Sources */,
 				904E832D2B03848C00018EA6 /* ContentView.swift in Sources */,
 				90655D842B04DE7900BC4C93 /* UnlockingView.swift in Sources */,

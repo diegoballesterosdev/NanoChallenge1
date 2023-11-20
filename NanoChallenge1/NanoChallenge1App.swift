@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct NanoChallenge1App: App {
@@ -13,5 +14,6 @@ struct NanoChallenge1App: App {
         WindowGroup {
             ContentView(obsVar: ObsVar())
         }
+        .modelContainer(for: ImageItem.self)
     }
 }
