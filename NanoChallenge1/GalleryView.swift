@@ -31,6 +31,12 @@ struct GalleryView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
+                
+                
+                
+                
+                
+                
                 LazyVGrid(columns: [
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
@@ -40,9 +46,11 @@ struct GalleryView: View {
                         let uiImage = UIImage(data: imageData.image!)
                         Image(uiImage: uiImage!)
                             .resizable()
-                            .aspectRatio(1, contentMode: .fill)
-                        
-                        
+                            .scaledToFill()
+                           
+                            .frame(width: 128, height: 128)
+
+                            .clipped()
                     }
                 }
                 .padding(2)
@@ -79,19 +87,9 @@ struct GalleryView: View {
             }
         }
         
-        Text("Hidden album!")
-        
-        Button("Lock album") {
-            obsVar.unlocked = false
-        }
-        
     }
     
 }
-
-
-
-
 
 #Preview {
     GalleryView(obsVar: ObsVar())
