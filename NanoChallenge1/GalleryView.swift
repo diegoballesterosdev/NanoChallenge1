@@ -16,51 +16,57 @@ struct GalleryView: View {
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.modelContext) private var context
     
-//    @State var imageItem = ImageItem()
+    @Namespace var namespace
+    
+    //    @State var imageItem = ImageItem()
     @State var selectedPhoto: PhotosPickerItem?
     
-    @Query private var items: [ImageItem]
+    @Query private var imageItems: [ImageItem]
+    
+    @State private var selectedItem: Data?
+    
+    
+    
     
     var body: some View {
         NavigationStack {
-            VStack {
-                
-                List {
-                    ForEach(items){ item in
-                        let uiImage = UIImage(data: item.image!)
+            ScrollView {
+                LazyVGrid(columns: [
+                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
+                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
+                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2)
+                ], spacing: 2) {
+                    ForEach(imageItems.reversed()) { imageData in
+                        let uiImage = UIImage(data: imageData.image!)
                         Image(uiImage: uiImage!)
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fill)
+                        
                         
                     }
                 }
-//                if let imageData = imageItem.image,
-//                   let uiImage = UIImage(data: imageData) {
-//                    Image(uiImage: uiImage)
-//                        .resizable()
-//                        .scaledToFit()
-//                        .scaledToFill()
-//                        .frame(maxWidth: .infinity, maxHeight: 300)
-//                    
-//                }
-                
-                
-                
-                
-                Text("Hidden album!")
-                
-                Button("Lock album") {
-                    obsVar.unlocked = false
-                }
-                
+                .padding(2)
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    PhotosPicker(selection: $selectedPhoto,
-                                 matching: .images,
-                                 photoLibrary: .shared()) {
-                        Label("Add Image", systemImage: "photo")
-                    }
+            
+        }
+        
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                PhotosPicker(selection: $selectedPhoto,
+                             matching: .images,
+                             photoLibrary: .shared()) {
+                    Label("Add Image", systemImage: "photo")
                 }
             }
+        }
+        .task(id: selectedPhoto) {
+            if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
+                //                imageItem.image = data
+                
+                let item =  ImageItem(image: data)
+                context.insert(item)
+            }
+            
         }
         //We lock the screen if the app goes to background
         .onChange(of: scenePhase) { newPhase in
@@ -72,17 +78,20 @@ struct GalleryView: View {
                 obsVar.unlocked = false
             }
         }
-        .task(id: selectedPhoto) {		
-            if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
-//                imageItem.image = data
-                
-                let item =  ImageItem(image: data)
-                context.insert(item)
-            }
-           
+        
+        Text("Hidden album!")
+        
+        Button("Lock album") {
+            obsVar.unlocked = false
         }
+        
     }
+    
 }
+
+
+
+
 
 #Preview {
     GalleryView(obsVar: ObsVar())
