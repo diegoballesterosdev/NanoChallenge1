@@ -8,6 +8,7 @@
 import SwiftUI
 import PhotosUI
 import SwiftData
+import SwiftUIImageViewer
 
 struct GalleryView: View {
     @ObservedObject var obsVar: ObsVar
@@ -16,14 +17,15 @@ struct GalleryView: View {
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.modelContext) private var context
     
-    @Namespace var namespace
-    
-    //    @State var imageItem = ImageItem()
     @State var selectedPhoto: PhotosPickerItem?
+    @State var isImageViewerPresented = false
+    @State private var selectedImage: Image?
+    
     
     @Query private var imageItems: [ImageItem]
     
     @State private var selectedItem: Data?
+    
     
     
     var body: some View {
@@ -34,19 +36,50 @@ struct GalleryView: View {
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2)
                 ], spacing: 2) {
-                    ForEach(imageItems) { imageData in
+                    ForEach(imageItems, id: \.id) { imageData in
                         let uiImage = UIImage(data: imageData.image!)
-                        Image(uiImage: uiImage!)
-                            .resizable()
-                            .scaledToFill()
-                           
-                            .frame(width: 128, height: 128)
-
-                            .clipped()
+                        NavigationLink(destination: SwiftUIImageViewer(image: Image(uiImage: uiImage!))) {
+                            Image(uiImage: uiImage!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 128, height: 128)
+                                .clipped()
+                        }
+                        //                        Image(uiImage: uiImage!)
+                        //                            .resizable()
+                        //                            .scaledToFill()
+                        //                            .frame(width: 128, height: 128)
+                        //                            .clipped()
+                        //                        
+                        //                            .onTapGesture {
+                        //                                selectedImage = Image(uiImage: uiImage!)
+                        //                                isImageViewerPresented = true
+                        //                            }
+                        //                            .fullScreenCover(isPresented: $isImageViewerPresented) {
+                        //                                if let selectedImage = selectedImage {
+                        //                                    SwiftUIImageViewer(image: selectedImage)
+                        //                                        .id(UUID())
+                        //                                        .overlay(alignment: .topTrailing) {
+                        //                                            Button {
+                        //                                                isImageViewerPresented = false
+                        //                                            } label: {
+                        //                                                Image(systemName: "xmark")
+                        //                                                    .font(.headline)
+                        //                                            }
+                        //                                            .buttonStyle(.bordered)
+                        //                                            .clipShape(Circle())
+                        //                                            .tint(.blue)
+                        //                                            .padding()
+                        //                                        }
+                        //                                }
+                        //                                
+                        //                            }
                     }
                 }
                 .padding(2)
+                
             }
+            .padding(.top, 200)
             .ignoresSafeArea()
         }
         
@@ -61,8 +94,6 @@ struct GalleryView: View {
         }
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
-                //                imageItem.image = data
-                
                 let item =  ImageItem(image: data)
                 context.insert(item)
             }
@@ -83,6 +114,6 @@ struct GalleryView: View {
     
 }
 
-#Preview {
-    GalleryView(obsVar: ObsVar())
-}
+//#Preview {
+//    GalleryView(obsVar: ObsVar(), selectedImage: Image)
+//}

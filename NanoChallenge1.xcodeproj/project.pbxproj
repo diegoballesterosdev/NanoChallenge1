@@ -18,6 +18,8 @@
 		906FB8742B0B5F3900998770 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906FB8732B0B5F3900998770 /* ImageItem.swift */; };
 		90747AC02B03DDB600B6E394 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90747ABF2B03DDB600B6E394 /* GalleryView.swift */; };
 		90747AC22B03DE4A00B6E394 /* ObsObjVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */; };
+		909AC23C2B0BE7560064499F /* SwiftUIImageViewer in Frameworks */ = {isa = PBXBuildFile; productRef = 909AC23B2B0BE7560064499F /* SwiftUIImageViewer */; };
+		909AC23E2B0BF56B0064499F /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909AC23D2B0BF56B0064499F /* ImageViewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,7 @@
 		906FB8732B0B5F3900998770 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		90747ABF2B03DDB600B6E394 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObsObjVar.swift; sourceTree = "<group>"; };
+		909AC23D2B0BF56B0064499F /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909AC23C2B0BE7560064499F /* SwiftUIImageViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +76,7 @@
 				90655D832B04DE7900BC4C93 /* UnlockingView.swift */,
 				904E83382B03856300018EA6 /* LockedView.swift */,
 				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
+				909AC23D2B0BF56B0064499F /* ImageViewer.swift */,
 				906FB8732B0B5F3900998770 /* ImageItem.swift */,
 				90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */,
 				904E832E2B03848D00018EA6 /* Assets.xcassets */,
@@ -104,6 +109,9 @@
 			dependencies = (
 			);
 			name = NanoChallenge1;
+			packageProductDependencies = (
+				909AC23B2B0BE7560064499F /* SwiftUIImageViewer */,
+			);
 			productName = NanoChallenge1;
 			productReference = 904E83272B03848C00018EA6 /* NanoChallenge1.app */;
 			productType = "com.apple.product-type.application";
@@ -132,6 +140,9 @@
 				Base,
 			);
 			mainGroup = 904E831E2B03848C00018EA6;
+			packageReferences = (
+				909AC23A2B0BE7560064499F /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */,
+			);
 			productRefGroup = 904E83282B03848C00018EA6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,6 +172,7 @@
 				906FB8742B0B5F3900998770 /* ImageItem.swift in Sources */,
 				904E83392B03856300018EA6 /* LockedView.swift in Sources */,
 				904E832D2B03848C00018EA6 /* ContentView.swift in Sources */,
+				909AC23E2B0BF56B0064499F /* ImageViewer.swift in Sources */,
 				90655D842B04DE7900BC4C93 /* UnlockingView.swift in Sources */,
 				90655D822B04C56500BC4C93 /* AlbumsView.swift in Sources */,
 				90602D0B2B07A0B50057D845 /* AlbumsGridView.swift in Sources */,
@@ -376,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		909AC23A2B0BE7560064499F /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fuzzzlove/swiftui-image-viewer?ref=iosexample.com";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		909AC23B2B0BE7560064499F /* SwiftUIImageViewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 909AC23A2B0BE7560064499F /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */;
+			productName = SwiftUIImageViewer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 904E831F2B03848C00018EA6 /* Project object */;
 }
