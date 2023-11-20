@@ -26,23 +26,15 @@ struct GalleryView: View {
     @State private var selectedItem: Data?
     
     
-    
-    
     var body: some View {
         NavigationStack {
             ScrollView {
-                
-                
-                
-                
-                
-                
                 LazyVGrid(columns: [
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2)
                 ], spacing: 2) {
-                    ForEach(imageItems.reversed()) { imageData in
+                    ForEach(imageItems) { imageData in
                         let uiImage = UIImage(data: imageData.image!)
                         Image(uiImage: uiImage!)
                             .resizable()
@@ -55,7 +47,7 @@ struct GalleryView: View {
                 }
                 .padding(2)
             }
-            
+            .ignoresSafeArea()
         }
         
         .toolbar {

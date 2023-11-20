@@ -11,7 +11,7 @@ struct ContentView: View {
     @ObservedObject var obsVar: ObsVar
     var body: some View {
         TabView {
-            Text("Library")
+            GalleryView(obsVar: ObsVar())
                 .tabItem {
                     Label("Library", systemImage: "photo.fill.on.rectangle.fill")
                 }

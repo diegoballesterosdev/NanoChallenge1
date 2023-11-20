@@ -13,6 +13,9 @@ class ImageItem: Identifiable {
     
     var id: String
     var fav: Bool
+    
+    
+    @Attribute(.externalStorage)
     var image: Data?
     
     init(image: Data) {
