@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct GalleryView: View {
     @ObservedObject var obsVar: ObsVar
@@ -13,15 +14,39 @@ struct GalleryView: View {
     //Allows to detect if the app is on background, active or inative
     @Environment(\.scenePhase) var scenePhase
     
+    @State var selectedPhoto: PhotosPickerItem?
+    @State var selectedPhotoData: Data?
+    
     var body: some View {
-        
-        VStack {
-            Text("Hidden album!")
-            Button("Lock album") {
-                obsVar.unlocked = false
+        NavigationStack {
+            VStack {
+                if let selectedPhotoData, let uiImage = UIImage(data: selectedPhotoData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFit()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: 300)
+                    
+                }
+                
+                
+                Text("Hidden album!")
+                
+                Button("Lock album") {
+                    obsVar.unlocked = false
+                }
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    PhotosPicker(selection: $selectedPhoto,
+                                 matching: .images,
+                                 photoLibrary: .shared()) {
+                        Label("Add Image", systemImage: "photo")
+                    }
+                }
             }
         }
-        
         //We lock the screen if the app goes to background
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .inactive {
@@ -31,6 +56,12 @@ struct GalleryView: View {
             } else if newPhase == .background {
                 obsVar.unlocked = false
             }
+        }
+        .task(id: selectedPhoto) {
+            if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
+                 selectedPhotoData = data
+            }
+           
         }
     }
 }
