@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct UnlockingView: View {
+    
+    
     @ObservedObject var obsVar: ObsVar
+    var title: String
+    
     var body: some View {
         if obsVar.unlocked {
-            GalleryView(obsVar: obsVar)
+            GalleryView(obsVar: obsVar, title: title)
                 .onDisappear() {
                     obsVar.unlocked = false
                 }
@@ -21,6 +25,4 @@ struct UnlockingView: View {
     }
 }
 
-#Preview {
-    UnlockingView(obsVar: ObsVar())
-}
+

@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AlbumsGridView: View {
+    
+    @Query private var imageItems: [ImageItem]
     
     @Environment(\.colorScheme) var colorScheme
     
@@ -20,11 +23,14 @@ struct AlbumsGridView: View {
                 LazyHGrid(rows: rows, spacing: 20) {
                     ForEach(0..<9) { int in
                         let randomInt = Int.random(in: 1..<100)
+                        let imageInt = Int.random(in: 1..<imageItems.count)
+                        let uiImage = UIImage(data: imageItems[imageInt].image!)
                         NavigationLink {
-                            Text("")
+                            GalleryView(obsVar: ObsVar(), title: "Album \(int+1)")
                         } label: {
                             VStack {
-                                Rectangle()
+                                Image(uiImage: uiImage!)
+                                    .resizable()
                                     .scaledToFit()
                                     .clipShape(.rect(cornerRadius: 5))
                                 HStack {

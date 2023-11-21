@@ -69,14 +69,8 @@
 		904E83292B03848C00018EA6 /* NanoChallenge1 */ = {
 			isa = PBXGroup;
 			children = (
+				904F352A2B0CB3F400551E55 /* Views */,
 				904E832A2B03848C00018EA6 /* NanoChallenge1App.swift */,
-				904E832C2B03848C00018EA6 /* ContentView.swift */,
-				90655D812B04C56500BC4C93 /* AlbumsView.swift */,
-				90602D0A2B07A0B50057D845 /* AlbumsGridView.swift */,
-				90655D832B04DE7900BC4C93 /* UnlockingView.swift */,
-				904E83382B03856300018EA6 /* LockedView.swift */,
-				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
-				909AC23D2B0BF56B0064499F /* ImageViewer.swift */,
 				906FB8732B0B5F3900998770 /* ImageItem.swift */,
 				90747AC12B03DE4A00B6E394 /* ObsObjVar.swift */,
 				904E832E2B03848D00018EA6 /* Assets.xcassets */,
@@ -91,6 +85,20 @@
 				904E83312B03848D00018EA6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		904F352A2B0CB3F400551E55 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				904E832C2B03848C00018EA6 /* ContentView.swift */,
+				90655D812B04C56500BC4C93 /* AlbumsView.swift */,
+				90602D0A2B07A0B50057D845 /* AlbumsGridView.swift */,
+				90655D832B04DE7900BC4C93 /* UnlockingView.swift */,
+				904E83382B03856300018EA6 /* LockedView.swift */,
+				90747ABF2B03DDB600B6E394 /* GalleryView.swift */,
+				909AC23D2B0BF56B0064499F /* ImageViewer.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

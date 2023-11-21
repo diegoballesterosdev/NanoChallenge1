@@ -26,7 +26,6 @@ struct AlbumsView: View {
     let rows = [GridItem(.adaptive(minimum: 150, maximum: 150))]
     
     private let listItems: [ListItem] = [
-        ListItem(name: "Imports", image: "square.and.arrow.down", size: 20),
         ListItem(name: "Hidden", image: "eye.slash", size: 20),
         ListItem(name: "Recently Deleted", image: "trash", size: 20),
     ]
@@ -54,7 +53,6 @@ struct AlbumsView: View {
                         
                     }
                     
-                    
                     Divider()
                         .padding(.leading)
                         .padding(.top)
@@ -63,7 +61,7 @@ struct AlbumsView: View {
                         List {
                             ForEach(listItems) { item in
                                 NavigationLink {
-                                    UnlockingView(obsVar: ObsVar())
+                                    UnlockingView(obsVar: ObsVar(), title: item.name)
                                 } label: {
                                     HStack {
                                         Image(systemName: item.image)
@@ -93,10 +91,8 @@ struct AlbumsView: View {
                     }
                 }
                 .navigationTitle("Albums")
-                
             }
         }
-        
     }
 }
 

@@ -26,10 +26,12 @@ struct GalleryView: View {
     
     @State private var selectedItem: Data?
     
+    var title: String
+    
     
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ScrollView {
                 LazyVGrid(columns: [
                     GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
@@ -45,44 +47,14 @@ struct GalleryView: View {
                                 .frame(width: 128, height: 128)
                                 .clipped()
                         }
-                        //                        Image(uiImage: uiImage!)
-                        //                            .resizable()
-                        //                            .scaledToFill()
-                        //                            .frame(width: 128, height: 128)
-                        //                            .clipped()
-                        //                        
-                        //                            .onTapGesture {
-                        //                                selectedImage = Image(uiImage: uiImage!)
-                        //                                isImageViewerPresented = true
-                        //                            }
-                        //                            .fullScreenCover(isPresented: $isImageViewerPresented) {
-                        //                                if let selectedImage = selectedImage {
-                        //                                    SwiftUIImageViewer(image: selectedImage)
-                        //                                        .id(UUID())
-                        //                                        .overlay(alignment: .topTrailing) {
-                        //                                            Button {
-                        //                                                isImageViewerPresented = false
-                        //                                            } label: {
-                        //                                                Image(systemName: "xmark")
-                        //                                                    .font(.headline)
-                        //                                            }
-                        //                                            .buttonStyle(.bordered)
-                        //                                            .clipShape(Circle())
-                        //                                            .tint(.blue)
-                        //                                            .padding()
-                        //                                        }
-                        //                                }
-                        //                                
-                        //                            }
+                        
                     }
                 }
                 .padding(2)
                 
             }
-            .padding(.top, 200)
-            .ignoresSafeArea()
-        }
-        
+//        }
+        .navigationTitle(title)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 PhotosPicker(selection: $selectedPhoto,
@@ -114,6 +86,6 @@ struct GalleryView: View {
     
 }
 
-//#Preview {
-//    GalleryView(obsVar: ObsVar(), selectedImage: Image)
-//}
+#Preview {
+    GalleryView(obsVar: ObsVar(), title: "Album")
+}
