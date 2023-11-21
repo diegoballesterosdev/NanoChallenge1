@@ -47,7 +47,6 @@ struct GalleryView: View {
                                 .frame(width: 128, height: 128)
                                 .clipped()
                         }
-                        
                     }
                 }
                 .padding(2)

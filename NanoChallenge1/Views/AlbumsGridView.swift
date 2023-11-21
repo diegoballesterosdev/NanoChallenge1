@@ -20,19 +20,35 @@ struct AlbumsGridView: View {
     var body: some View {
         ScrollView(.horizontal) {
             Section {
-                LazyHGrid(rows: rows, spacing: 20) {
+                LazyHGrid(rows: [GridItem(.flexible(minimum: 100, maximum: 170), spacing: 2),
+                                 GridItem(.flexible(minimum: 100, maximum: 170), spacing: 2)]) {
                     ForEach(0..<9) { int in
+                        
                         let randomInt = Int.random(in: 1..<100)
-                        let imageInt = Int.random(in: 1..<imageItems.count)
-                        let uiImage = UIImage(data: imageItems[imageInt].image!)
+                       
+                        
                         NavigationLink {
                             GalleryView(obsVar: ObsVar(), title: "Album \(int+1)")
                         } label: {
                             VStack {
-                                Image(uiImage: uiImage!)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .clipShape(.rect(cornerRadius: 5))
+                                
+                                if imageItems.isEmpty {
+                                    Image("Photo")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 170, height: 170)
+                                        .clipShape(.rect(cornerRadius: 5))
+                                } else {
+                                    let imageInt = Int.random(in: 0..<imageItems.count)
+                                    let uiImage = UIImage(data: imageItems[imageInt].image!)
+                                    Image(uiImage: uiImage!)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 170, height: 170)
+                                        .clipShape(.rect(cornerRadius: 5))
+                                }
+                                
+                                    
                                 HStack {
                                     Text("Album \(int+1)")
                                         .foregroundStyle(colorScheme == .light ? .black : .white)
@@ -50,7 +66,6 @@ struct AlbumsGridView: View {
                     }
                 }
             }
-            .frame(height: 400)
             .padding(.horizontal)
         }
         .scrollIndicators(.hidden)
