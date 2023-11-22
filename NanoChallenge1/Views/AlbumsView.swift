@@ -39,6 +39,9 @@ struct AlbumsView: View {
                         .padding(.leading)
                     Section {
                         AlbumsGridView()
+                            .onAppear() {
+                                obsVar.unlocked = false
+                            }
                         
                     } header: {
                         HStack {

@@ -67,6 +67,7 @@ struct AlbumsGridView: View {
             .padding(.horizontal)
         }
         .scrollIndicators(.hidden)
+        
     }
 }
 

@@ -16,9 +16,9 @@ struct UnlockingView: View {
     var body: some View {
         if obsVar.unlocked {
             GalleryView(obsVar: obsVar, title: title)
-                .onDisappear() {
-                    obsVar.unlocked = false
-                }
+//                .onDisappear() {
+//                    obsVar.unlocked = false
+//                }
         } else {
             LockedView(obsVar: obsVar)
         }

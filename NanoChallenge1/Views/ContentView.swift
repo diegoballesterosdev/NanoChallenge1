@@ -15,6 +15,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Albums", systemImage: "rectangle.stack.fill")
                 }
+        
     }
 }
 

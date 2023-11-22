@@ -15,8 +15,6 @@ struct LockedView: View {
     var body: some View {
         
         VStack {
-//            Spacer()
-            
             VStack {
                 Image(systemName: "lock.fill")
                     .resizable()
@@ -35,12 +33,7 @@ struct LockedView: View {
             Button("View Album") {
                 authenticate()
             }
-            
-//            Spacer()
         }
-        
-        
-        
     }
     
     func authenticate() {
