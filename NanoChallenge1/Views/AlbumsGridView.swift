@@ -60,7 +60,7 @@ struct AlbumsGridView: View {
                             }
                             .padding(.horizontal, 10)
                         }
-                        .accessibilityLabel("Album \(int+1), \(randomInt) photos")
+                        .accessibilityLabel("Album \(int+1), \(imageItems.count) photos")
                     }
                 }
             }

@@ -44,12 +44,14 @@ struct GalleryView: View {
                     VStack{
                         NavigationLink {
                             ImageViewer(image: Image(uiImage: uiImage!), imageItem: imageItem )
+                                
                         } label: {
                             Image(uiImage: uiImage!)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 128, height: 128)
                                 .clipped()
+                                .accessibilityValue("Image")
                         }
                     }
                 }
