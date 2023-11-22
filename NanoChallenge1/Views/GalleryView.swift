@@ -61,12 +61,14 @@ struct GalleryView: View {
                              photoLibrary: .shared()) {
                     Label("Add Image", systemImage: "photo")
                 }
+                             
             }
         }
         .task(id: selectedPhoto) {
             if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
                 let item =  ImageItem(image: data)
                 context.insert(item)
+                selectedPhoto = nil
             }
             
         }

@@ -20,18 +20,16 @@ struct AlbumsGridView: View {
     var body: some View {
         ScrollView(.horizontal) {
             Section {
-                LazyHGrid(rows: [GridItem(.flexible(minimum: 100, maximum: 170), spacing: 2),
-                                 GridItem(.flexible(minimum: 100, maximum: 170), spacing: 2)]) {
+                LazyHGrid(rows: [GridItem(.flexible(minimum: 100, maximum: 170), spacing: 45),
+                                 GridItem(.flexible(minimum: 100, maximum: 170), spacing: 20)]) {
                     ForEach(0..<9) { int in
                         
                         let randomInt = Int.random(in: 1..<100)
-                       
                         
                         NavigationLink {
                             GalleryView(obsVar: ObsVar(), title: "Album \(int+1)")
                         } label: {
                             VStack {
-                                
                                 if imageItems.isEmpty {
                                     Image("Photo")
                                         .resizable()
@@ -44,23 +42,23 @@ struct AlbumsGridView: View {
                                     Image(uiImage: uiImage!)
                                         .resizable()
                                         .scaledToFill()
-                                        .frame(width: 170, height: 170)
+                                        .frame(width: 150, height: 150)
                                         .clipShape(.rect(cornerRadius: 5))
                                 }
                                 
-                                    
                                 HStack {
                                     Text("Album \(int+1)")
                                         .foregroundStyle(colorScheme == .light ? .black : .white)
                                     Spacer()
                                 }
                                 HStack {
-                                    Text("\(randomInt)")
+                                    Text("\(imageItems.count)")
                                         .foregroundStyle(colorScheme == .light ? .black : .white)
-                                        .foregroundStyle(.secondary)
+                                        .opacity(0.7)
                                     Spacer()
                                 }
                             }
+                            .padding(.horizontal, 10)
                         }
                         .accessibilityLabel("Album \(int+1), \(randomInt) photos")
                     }
