@@ -22,7 +22,7 @@ struct AlbumsGridView: View {
             Section {
                 LazyHGrid(rows: [GridItem(.flexible(minimum: 100, maximum: 170), spacing: 45),
                                  GridItem(.flexible(minimum: 100, maximum: 170), spacing: 20)]) {
-                    ForEach(0..<9) { int in
+                    ForEach(0..<6) { int in
                         
                         let randomInt = Int.random(in: 1..<100)
                         

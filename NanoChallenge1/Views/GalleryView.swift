@@ -41,7 +41,6 @@ struct GalleryView: View {
             ], spacing: 2) {
                 ForEach(imageItems, id: \.id) { imageItem in
                     let uiImage = UIImage(data: imageItem.image!)
-                    VStack{
                         NavigationLink {
                             ImageViewer(image: Image(uiImage: uiImage!), imageItem: imageItem )
                                 
@@ -53,7 +52,6 @@ struct GalleryView: View {
                                 .clipped()
                                 .accessibilityValue("Image")
                         }
-                    }
                 }
             }
             .padding(2)
