@@ -15,10 +15,11 @@ struct ImageViewer: View {
     let image: Image
     let imageItem: ImageItem
     @Environment(\.modelContext) private var context
-    @Binding var isPresented: Bool
-    @Query private var imageItems: [ImageItem]
+    @Environment(\.dismiss) var dismiss
+    //    @Binding var isPresented: Bool
+//    @Query private var imageItems: [ImageItem]
     
-
+    
     var body: some View {
         SwiftUIImageViewer(image: image)
             .toolbar {
@@ -27,16 +28,13 @@ struct ImageViewer: View {
                         Spacer()
                         Button {
                             context.delete(imageItem)
+                            dismiss()
                         } label: {
                             Image(systemName: "trash")
                         }
                     }
-                    
                 }
-                
             }
-            
-        
     }
 }
 

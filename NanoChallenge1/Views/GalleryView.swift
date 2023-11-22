@@ -16,10 +16,12 @@ struct GalleryView: View {
     //Allows to detect if the app is on background, active or inative
     @Environment(\.scenePhase) var scenePhase
     @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) var dismiss
     
     @State var selectedPhoto: PhotosPickerItem?
     @State var isImageViewerPresented = false
     @State private var selectedImage: Image?
+    @State private var deleteImage = false
     
     
     @Query private var imageItems: [ImageItem]
@@ -37,31 +39,19 @@ struct GalleryView: View {
                 GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
                 GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2)
             ], spacing: 2) {
-                ForEach(imageItems, id: \.id) { imageData in
-                    let uiImage = UIImage(data: imageData.image!)
-                    NavigationLink(destination:
-                                    (SwiftUIImageViewer(image: Image(uiImage: uiImage!))
-                                        .toolbar {
-                                            ToolbarItem(placement: .bottomBar) {
-                                                HStack {
-                                                    Spacer()
-                                                    Button {
-                                                        context.delete(imageData)
-                                                        
-                                                    } label: {
-                                                        Image(systemName: "trash")
-                                                    }
-                                                }
-                                            }
-                                        }))
-                    {
-                        Image(uiImage: uiImage!)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 128, height: 128)
-                            .clipped()
+                ForEach(imageItems, id: \.id) { imageItem in
+                    let uiImage = UIImage(data: imageItem.image!)
+                    VStack{
+                        NavigationLink {
+                            ImageViewer(image: Image(uiImage: uiImage!), imageItem: imageItem )
+                        } label: {
+                            Image(uiImage: uiImage!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 128, height: 128)
+                                .clipped()
+                        }
                     }
-                    
                 }
             }
             .padding(2)
