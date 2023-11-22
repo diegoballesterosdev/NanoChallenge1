@@ -31,28 +31,25 @@ struct GalleryView: View {
     
     
     var body: some View {
-//        NavigationStack {
-            ScrollView {
-                LazyVGrid(columns: [
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
-                    GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2)
-                ], spacing: 2) {
-                    ForEach(imageItems, id: \.id) { imageData in
-                        let uiImage = UIImage(data: imageData.image!)
-                        NavigationLink(destination: SwiftUIImageViewer(image: Image(uiImage: uiImage!))) {
-                            Image(uiImage: uiImage!)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 128, height: 128)
-                                .clipped()
-                        }
+        ScrollView {
+            LazyVGrid(columns: [
+                GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
+                GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2),
+                GridItem(.flexible(minimum: 100, maximum: 200), spacing: 2)
+            ], spacing: 2) {
+                ForEach(imageItems, id: \.id) { imageData in
+                    let uiImage = UIImage(data: imageData.image!)
+                    NavigationLink(destination: SwiftUIImageViewer(image: Image(uiImage: uiImage!))) {
+                        Image(uiImage: uiImage!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 128, height: 128)
+                            .clipped()
                     }
                 }
-                .padding(2)
-                
             }
-//        }
+            .padding(2)
+        }
         .navigationTitle(title)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -61,7 +58,7 @@ struct GalleryView: View {
                              photoLibrary: .shared()) {
                     Label("Add Image", systemImage: "photo")
                 }
-                             
+                
             }
         }
         .task(id: selectedPhoto) {
