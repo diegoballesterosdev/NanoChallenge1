@@ -39,13 +39,29 @@ struct GalleryView: View {
             ], spacing: 2) {
                 ForEach(imageItems, id: \.id) { imageData in
                     let uiImage = UIImage(data: imageData.image!)
-                    NavigationLink(destination: SwiftUIImageViewer(image: Image(uiImage: uiImage!))) {
+                    NavigationLink(destination:
+                                    (SwiftUIImageViewer(image: Image(uiImage: uiImage!))
+                                        .toolbar {
+                                            ToolbarItem(placement: .bottomBar) {
+                                                HStack {
+                                                    Spacer()
+                                                    Button {
+                                                        context.delete(imageData)
+                                                        
+                                                    } label: {
+                                                        Image(systemName: "trash")
+                                                    }
+                                                }
+                                            }
+                                        }))
+                    {
                         Image(uiImage: uiImage!)
                             .resizable()
                             .scaledToFill()
                             .frame(width: 128, height: 128)
                             .clipped()
                     }
+                    
                 }
             }
             .padding(2)
